@@ -9,15 +9,17 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup
+  datosCorrectos: boolean = false;
+  mensajeError: string = '';
   constructor(private creadorFormulario: FormBuilder, private auth_: AngularFireAuth) { }
 
-  ngOnInit(){
+  ngOnInit() {
     this.crearFormulario()
   }
 
 
-  crearFormulario(){
-    this.loginForm =  this.creadorFormulario.group({
+  crearFormulario() {
+    this.loginForm = this.creadorFormulario.group({
       email: ['', Validators.compose([
         Validators.required, Validators.email
       ])],
@@ -26,14 +28,19 @@ export class LoginComponent implements OnInit {
       ])],
     })
   }
-// this.myGroup = new FormGroup({
-//    firstName: new FormControl()
 
-  acceder(){
-    this.auth_.signInWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password)
-    .then((usuario) =>{
-      console.log(usuario)
-    } )
+  acceder() {
+
+    if (this.loginForm.valid) {
+      this.datosCorrectos = true;
+      this.auth_.signInWithEmailAndPassword(this.loginForm.value.email, this.loginForm.value.password)
+        .then((usuario) => {
+          console.log(usuario)
+        })
+    } else {
+      this.datosCorrectos = false;
+      this.mensajeError ='Por favor revisa que los datos esten correctos';
+
   }
 
 }
