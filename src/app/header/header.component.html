@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #A61914">
+  <a class="navbar-brand" href="#">
+    <img src="../../assets/img/wolfrose.jpeg" width="30" height="30" class="d-inline-block align-top" alt="">
+    WolfGYM
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="/" routerLinkActiveOptions="{exact:true}">Registro <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link"  routerLink="/"  routerLinkActive="active">ver Registros <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item dropdown" dropdown>
+        <a class="nav-link dropdown-toggle" routerLinkActive="active" dropdownToggle href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Clientes
+        </a>
+        <div class="dropdown-menu" *dropdownMenu aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item">Agregar</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item"  routerLink="/clientes">lista de Clientes</a>
+        </div>
+      </li>
+      <li class="nav-item dropdown" dropdown>
+        <a class="nav-link dropdown-toggle" routerLinkActive="active" dropdownToggle href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Precios
+        </a>
+        <div class="dropdown-menu" *dropdownMenu aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item">Agregar</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item">Ver precios</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#"  routerLinkActive="active" routerLink="/" >Usuarios <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item dropdown" dropdown>
+        <a class="nav-link dropdown-toggle" routerLinkActive="active" dropdownToggle href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Reportes
+        </a>
+        <div class="dropdown-menu" *dropdownMenu aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item">Registros  diarios</a>
+          <a class="dropdown-item">Registros mensuales</a>
+          <a class="dropdown-item"> Mas vendidas</a>
+        </div>
+      </li>
+
+    </ul>
+    <span class="navbar-text">
+      Welcome,
+    </span>
+    <button  class="btn btn-primary ml-2"(click)="logout()">Log out</button>
+  </div>
+</nav>

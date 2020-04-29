@@ -1,6 +1,9 @@
 <div *ngIf="usuario && !cargando; else showLogin">
-  <h1>Hello {{ usuario.email }}!</h1>
-  <button (click)="logout()">Logout</button>
+
+  <app-header></app-header>
+  <!-- colocamos el router outlet aqui ya que no necesitamos que este se muestre
+  si el usuario no esta logeado. -->
+  <router-outlet></router-outlet>
 </div>
 
 <ng-template #showLogin>
@@ -10,5 +13,3 @@
 <app-login *ngIf="!cargando"></app-login>
 </ng-template>
 
-
-<router-outlet></router-outlet>

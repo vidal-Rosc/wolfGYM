@@ -23,13 +23,5 @@ export class AppComponent {
       }, 2000);
     })
   }
-  login() {
-    /*This would be the method to access with google account
-    this.auth.signInWithPopup(new auth.GoogleAuthProvider());*/
-    this.afAuth.signInWithEmailAndPassword('pepeperez@hotmail.com','123456');
-  }
-  logout() {
-    this.afAuth.signOut();
-  }
 }
 
