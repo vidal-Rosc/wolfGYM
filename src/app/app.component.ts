@@ -20,7 +20,7 @@ export class AppComponent {
         this.cargando = false;
         this.usuario = usuario;
         console.log(usuario);
-      }, 1000);
+      }, 2000);
     })
   }
   login() {
