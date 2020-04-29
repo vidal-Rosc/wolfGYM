@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-clientes',
@@ -6,10 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./clientes.component.scss']
 })
 export class ClientesComponent implements OnInit {
+  clientes: Array<any> = new Array<any>();
+  constructor(private bbdd: AngularFirestore) { }
 
-  constructor() { }
-
-  ngOnInit(): void {
+  ngOnInit(){
+    this.bbdd.collection('clientes').valueChanges().subscribe((resultado)=>{
+      console.log(resultado)
+      this.clientes = resultado;
+    })
   }
 
+  buscarCliente(){
+
+  }
 }

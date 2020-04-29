@@ -1,3 +1,19 @@
-<div class="container">
-
+<div class="container mt-5">
+  <form  action="" class="form-group">
+    <input class="form-control" type="search" placeholder="Buscar cliente">
+  </form>
+  <!-- (input)="buscarCliente($event.target.value)"  -->
+  <div class="row">
+    <div class="col sm-3 mb-3" *ngFor="let cliente of clientes">
+      <div class="card" style="width: 19rem; height:23rem">
+        <img class="card-img-top imgCliente" [src]="cliente.foto" alt=""/>
+        <div class="card-body">
+          <h5 class="card-title">{{cliente.nombre}}, {{cliente.apellidos}}</h5>
+          <h6 class="card-subtitle">{{cliente.email}}</h6>
+          <a href="#" class="card-link">Editar</a>
+          <a href="#"  class="card-link text-danger">Deshabilitar</a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

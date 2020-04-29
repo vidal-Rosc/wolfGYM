@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxSpinnerModule } from "ngx-spinner";
 import { HeaderComponent } from './header/header.component';
 import { ClientesComponent } from './clientes/clientes.component';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import { ClientesComponent } from './clientes/clientes.component';
   ],
   providers: [
     AngularFireAuth,
+    AngularFirestore,
   ],
   bootstrap: [AppComponent]
 })
