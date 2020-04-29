@@ -11,10 +11,30 @@ export class ClientesComponent implements OnInit {
   constructor(private bbdd: AngularFirestore) { }
 
   ngOnInit(){
-    this.bbdd.collection('clientes').valueChanges().subscribe((resultado)=>{
-      console.log(resultado)
-      this.clientes = resultado;
+    // this.bbdd.collection('clientes').valueChanges().subscribe((resultado)=>{
+    //   console.log(resultado)
+    //   this.clientes = resultado;
+    // })
+
+    //Obteniendo el ID desde firebase
+    //nos aseguramos de que el array esta vacio
+    this.clientes.length = 0;
+    this.bbdd.collection('clientes').get().subscribe((resultado)=>{
+      console.log(resultado.docs)
+      for(let item of resultado.docs){
+        // console.log(item.id);
+        // console.log(item.data());
+        // console.log(item.ref);
+         // con esto, me creo un cliente y lo igualo a la data.
+         //le creo los campos id y ref y por ultimo lo agrego al listado de clientes.
+        let cliente = item.data();
+        cliente.id = item.id;
+        cliente.ref = item.ref;
+        this.clientes.push(cliente);
+      }
+
     })
+
   }
 
   buscarCliente(){
