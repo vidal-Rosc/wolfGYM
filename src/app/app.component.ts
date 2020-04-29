@@ -11,24 +11,25 @@ export class AppComponent {
   title = 'wolfGYM';
   usuario: User;
   cargando: boolean = true;
+  loading: string = 'assets/img/loading.webp'
 
-  constructor(public auth: AngularFireAuth) {
-    this.auth.user.subscribe((user)=>{
+  constructor(private afAuth: AngularFireAuth) {
+    this.afAuth.user.subscribe((usuario)=>{
       //Giving realness of login. :)
       setTimeout(()=>{
         this.cargando = false;
-        this.usuario = user;
-        console.log(user);
+        this.usuario = usuario;
+        console.log(usuario);
       }, 1000);
     })
   }
   login() {
     /*This would be the method to access with google account
     this.auth.signInWithPopup(new auth.GoogleAuthProvider());*/
-    this.auth.signInWithEmailAndPassword('pepeperez@hotmail.com','123456');
+    this.afAuth.signInWithEmailAndPassword('pepeperez@hotmail.com','123456');
   }
   logout() {
-    this.auth.signOut();
+    this.afAuth.signOut();
   }
 }
 

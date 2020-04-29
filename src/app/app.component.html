@@ -4,8 +4,12 @@
 </div>
 
 <ng-template #showLogin>
-  <div *ngIf="cargando">
-    <h1>Cargando.....</h1>
+  <div *ngIf="cargando" class="container">
+    <div class="row-md-3">
+      <div class="col-md-6">
+        <img [src]="loading" style="margin: 0 auto" class="img-fluid" alt=""/>
+    </div>
+    </div>
   </div>
 <app-login *ngIf="!cargando"></app-login>
 </ng-template>

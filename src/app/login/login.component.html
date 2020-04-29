@@ -1,5 +1,5 @@
 <div class="container mt-5">
-  <div class="d-flex justify-content-center h-100 mt-10">
+  <div class="d-flex justify-content-center h-100">
     <div class="card">
       <div class="card-header text-center">
         <h3>-------------  WolfGYM  ---------------</h3>
@@ -7,11 +7,22 @@
         <h5> Please, Log in </h5>
       </div>
       <div class="card-body">
-        <form [FormGroup]="loginForm">
+        <form [formGroup]="loginForm">
           <div class="input-group form-group">
             <span class="input-group-text"><i class="fas fa-user"></i></span>
             <input type="email" class="form-control" formControlName="email" placeholder="E-mail" />
           </div>
+          <!-- Creamos un div extra cuando haya mas de una validacion
+          poder mostrar el error que corresponde y no todos -->
+          <div *ngIf="loginForm.controls['email'].invalid && loginForm.controls['email'].dirty">
+            <div *ngIf="loginForm.controls['email'].errors.required"class="alert alert-danger" role="alert">
+              <span>El email es requerido!</span>
+            </div>
+            <div *ngIf="loginForm.controls['email'].errors.email" class="alert alert-danger" role="alert">
+              <span>Debe introducir un email correcto</span>
+            </div>
+          </div>
+
           <div class="input-group form-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="fas fa-key"></i></span>
@@ -21,15 +32,21 @@
               class="form-control"
               formControlName="password"
               placeholder="password"
-              (keyUp.enter)="ingresar()"
+              (keyUp.enter)="acceder()"
             />
           </div>
-            <div class="row align-items-center remember">
-              <input type="checkbox" />Remember Me
+             <div *ngIf="loginForm.controls['password'].invalid && loginForm.controls['password'].dirty">
+              <div  *ngIf="loginForm.controls['password'].errors.required" class="alert alert-danger" role="alert">
+                <span>La password es requerida!</span>
+              </div>
+              <div *ngIf="loginForm.controls['password'].errors.minLength" class="alert alert-danger" role="alert">
+                <span>La contrasenia debe ser mayor a 6 digitos!</span>
+              </div>
             </div>
+
           <!-- Agregando [disabled]="!login.valid" me habilitara el boton
           solo si es valido cada uno de los inputs del formulario-->
-            <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary float-right" (click)="acceder()">
+            <button type="submit"[disabled]="!loginForm.valid" class="btn btn-primary float-right" (click)="acceder()">
               Acceder
             </button>
         </form>
@@ -42,4 +59,8 @@
           <a href="#">Forgot your password?</a>
         </div>
       </div>
+      <div *ngIf="!datosCorrectos" class="alert alert-warning" role="alert">
+        {{mensajeError}}
+      </div>
     </div>
+</div>
