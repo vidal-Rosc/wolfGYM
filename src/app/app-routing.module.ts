@@ -11,6 +11,9 @@ const routes: Routes = [
   {
     path:'add-clientes', component: AddClientesComponent
   },
+  {
+    path:'add-clientes/:clienteID', component: AddClientesComponent
+  },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
