@@ -18,6 +18,7 @@ import { HeaderComponent } from './header/header.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { AddClientesComponent } from './add-clientes/add-clientes.component';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 
 
 @NgModule({
@@ -34,6 +35,7 @@ import { AddClientesComponent } from './add-clientes/add-clientes.component';
     FormsModule,
     ReactiveFormsModule,
     NgxSpinnerModule,
+    ProgressbarModule.forRoot(),
     BsDropdownModule.forRoot(),
     AccordionModule.forRoot(),
     BrowserAnimationsModule,

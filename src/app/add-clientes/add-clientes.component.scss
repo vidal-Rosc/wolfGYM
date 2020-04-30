@@ -1,10 +1,17 @@
 .imagen{
   background-image: url('../../assets/img/wolfrose.jpeg');
-  border: 1px solid red;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #E8ECF7;
+  height: 911px;
+  width: 50%;
 }
 
 .formulario{
-  border: 1px solid blue;
-  height: 200px;
+  height: 911px;
   width: 50%;
+}
+.main{
+  display: flex;
+  align-items: flex-start;
 }
