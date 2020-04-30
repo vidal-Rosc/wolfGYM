@@ -20,6 +20,8 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AddClientesComponent } from './add-clientes/add-clientes.component';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
     BsDropdownModule.forRoot(),
     AccordionModule.forRoot(),
     BrowserAnimationsModule,
+    AngularFireStorageModule,
     AngularFireModule.initializeApp(environment.firebase),
 
   ],

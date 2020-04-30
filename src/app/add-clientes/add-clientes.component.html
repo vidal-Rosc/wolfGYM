@@ -9,11 +9,12 @@
             </div>
             <div class="card-body">
               <form  [formGroup]="clientesFormulario">
+
                 <div class="input-group form-group">
                   <span class="input-group-text"><i class="fas fa-user"></i></span>
-                  <input type="text" class="form-control" formControName="nombre" placeholder="Nombre" />
+                  <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre" />
                 </div>
-                <div  *ngIf="clientesFormulario.controls['nombre'].invalid && clientesFormulario.controls['nombre'].dirty" class="alert alert-danger" role="alert">
+                <div *ngIf="clientesFormulario.controls['nombre'].invalid && clientesFormulario.controls['nombre'].dirty" class="alert alert-danger" role="alert">
                   <span *ngIf="clientesFormulario.controls['nombre'].errors.required">El nombre es requerido!</span>
                 </div>
                 <!-- Con esta validacion podemos saber si el nombre ya esta escrito(invalid)
@@ -29,7 +30,7 @@
                 </div>
                 <div class="input-group form-group">
                   <span class="input-group-text"><i class="fas fa-user"></i></span>
-                  <input type="email" class="form-control"  placeholder="E-mail" />
+                  <input type="email" class="form-control" formControlName="email" placeholder="E-mail" />
                 </div>
                 <!-- Creamos un div extra cuando haya mas de una validacion
                 poder mostrar el error que corresponde y no todos -->
@@ -46,28 +47,29 @@
                   <input type="date" class="form-control" formControlName="fecha_nacimiento" placeholder="fecha de nacimiento" />
                 </div>
                 <div *ngIf="clientesFormulario.controls['fecha_nacimiento'].invalid && clientesFormulario.controls['fecha_nacimiento'].dirty" class="alert alert-danger" role="alert">
-                  <span *ngIf="clientesFormulario.controls['fecha_nacimiento'].errors.required">La foto es requerida!</span>
+                  <span *ngIf="clientesFormulario.controls['fecha_nacimiento'].errors.required">la fecha de nacimiento es requerida!</span>
                 </div>
                 <div class="input-group form-group">
                   <span class="input-group-text"><i class="fas fa-user"></i></span>
                   <input type="tel" class="form-control" formControlName="telefono" placeholder="telefono" />
                 </div>
                 <div *ngIf="clientesFormulario.controls['telefono'].invalid && clientesFormulario.controls['telefono'].dirty" class="alert alert-danger" role="alert">
-                  <span *ngIf="clientesFormulario.controls['telefono'].errors.required">La foto es requerida!</span>
+                  <span *ngIf="clientesFormulario.controls['telefono'].errors.required">Debe agregar un  numero de movil!</span>
                 </div>
 
                 <!-- Agregando [disabled]="!formularioCreado.valid" me habilitara el boton
                 solo si es valido cada uno de los inputs del formulario-->
                 <div class="input-group form-group">
-                  <input type="file" class="form-control-file" formControlName="foto"  placeholder=" Seleccione una foto" />
+                  <input type="file" class="form-control-file" (change)="subirImagen($event)" formControlName="foto"  placeholder=" Seleccione una foto" />
                 </div>
                 <div *ngIf="clientesFormulario.controls['foto'].invalid && clientesFormulario.controls['foto'].dirty" class="alert alert-danger" role="alert">
                   <span *ngIf="clientesFormulario.controls['foto'].errors.required">La foto es requerida!</span>
                 </div>
-                <div class="loading">
+                <div  *ngIf="porcentajeSubida >0" class="loading">
+                  <progressbar [value]="porcentajeSubida" type="danger" [striped]="true">{{porcentajeSubida}}%</progressbar>
                 </div>
                 <br>
-                  <button [disabled]="!clientesFormulario.valid"  type="submit" class="btn btn-primary float-right" (click)="agregar()">
+                  <button  type="submit" [disabled]="!clientesFormulario.valid"  class="btn btn-primary float-right" (click)="agregar()">
                     Agregar
                   </button>
               </form>
