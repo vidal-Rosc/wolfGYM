@@ -25,6 +25,6 @@ export class AddClientesComponent implements OnInit {
   }
 
   agregar(){
-
+    console.log(this.clientesFormulario.value)
   }
 }

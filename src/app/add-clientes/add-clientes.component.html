@@ -13,9 +13,9 @@
                   <span class="input-group-text"><i class="fas fa-user"></i></span>
                   <input type="text" class="form-control" formControName="nombre" placeholder="Nombre" />
                 </div>
-                <!-- <div  *ngIf="formularioCreado.controls['nombre'].invalid && formularioCreado.controls['nombre'].dirty" class="alert alert-danger" role="alert">
-                  <span *ngIf="formularioCreado.controls['nombre'].errors.required">El nombre es requerido!</span>
-                </div> -->
+                <div  *ngIf="clientesFormulario.controls['nombre'].invalid && clientesFormulario.controls['nombre'].dirty" class="alert alert-danger" role="alert">
+                  <span *ngIf="clientesFormulario.controls['nombre'].errors.required">El nombre es requerido!</span>
+                </div>
                 <!-- Con esta validacion podemos saber si el nombre ya esta escrito(invalid)
                 [input lleno] o apenas se empieza a escribir (dirty)
                 {{formularioCreado.controls['nombre'].invalid}}
@@ -24,69 +24,50 @@
                   <span class="input-group-text"><i class="fas fa-user"></i></span>
                   <input type="text" class="form-control" formControlName="apellidos" placeholder="Apellidos" />
                 </div>
-                <!-- <div *ngIf="formularioCreado.controls['apellidos'].invalid && formularioCreado.controls['apellidos'].dirty" class="alert alert-danger" role="alert">
-                  <span *ngIf="formularioCreado.controls['apellidos'].errors.required">El Apellido es requerido!</span>
-                </div> -->
+                <div *ngIf="clientesFormulario.controls['apellidos'].invalid && clientesFormulario.controls['apellidos'].dirty" class="alert alert-danger" role="alert">
+                  <span *ngIf="clientesFormulario.controls['apellidos'].errors.required">El Apellido es requerido!</span>
+                </div>
                 <div class="input-group form-group">
                   <span class="input-group-text"><i class="fas fa-user"></i></span>
                   <input type="email" class="form-control"  placeholder="E-mail" />
                 </div>
                 <!-- Creamos un div extra cuando haya mas de una validacion
                 poder mostrar el error que corresponde y no todos -->
-                <!-- <div *ngIf="formularioCreado.controls['email'].invalid && formularioCreado.controls['email'].dirty">
-                  <div *ngIf="formularioCreado.controls['email'].errors.required"class="alert alert-danger" role="alert">
+                <div *ngIf="clientesFormulario.controls['email'].invalid && clientesFormulario.controls['email'].dirty">
+                  <div *ngIf="clientesFormulario.controls['email'].errors.required"class="alert alert-danger" role="alert">
                     <span>El email es requerido!</span>
                   </div>
-                  <div *ngIf="formularioCreado.controls['email'].errors.email" class="alert alert-danger" role="alert">
+                  <div *ngIf="clientesFormulario.controls['email'].errors.email" class="alert alert-danger" role="alert">
                     <span>Debe introducir un email correcto</span>
                   </div>
-                </div> -->
+                </div>
                 <div class="input-group form-group">
                   <span class="input-group-text"><i class="fas fa-user"></i></span>
                   <input type="date" class="form-control" formControlName="fecha_nacimiento" placeholder="fecha de nacimiento" />
                 </div>
-                <!-- <div *ngIf="formularioCreado.controls['fecha_nacimiento'].invalid && formularioCreado.controls['fecha_nacimiento'].dirty" class="alert alert-danger" role="alert">
-                  <span *ngIf="formularioCreado.controls['fecha_nacimiento'].errors.required">La foto es requerida!</span>
-                </div> -->
+                <div *ngIf="clientesFormulario.controls['fecha_nacimiento'].invalid && clientesFormulario.controls['fecha_nacimiento'].dirty" class="alert alert-danger" role="alert">
+                  <span *ngIf="clientesFormulario.controls['fecha_nacimiento'].errors.required">La foto es requerida!</span>
+                </div>
                 <div class="input-group form-group">
                   <span class="input-group-text"><i class="fas fa-user"></i></span>
                   <input type="tel" class="form-control" formControlName="telefono" placeholder="telefono" />
                 </div>
-                <!-- <div *ngIf="formularioCreado.controls['telefono'].invalid && formularioCreado.controls['telefono'].dirty" class="alert alert-danger" role="alert">
-                  <span *ngIf="formularioCreado.controls['telefono'].errors.required">La foto es requerida!</span>
-                </div> -->
-
-                <!-- <div class="input-group form-group">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fas fa-key"></i></span>
-                  </div>
-                  <input
-                    type="password"
-                    class="form-control"
-                    placeholder="password"
-                  />
-                </div> -->
-                  <!-- <div *ngIf="formularioCreado.controls['password'].invalid && formularioCreado.controls['password'].dirty">
-                    <div  *ngIf="formularioCreado.controls['password'].errors.required" class="alert alert-danger" role="alert">
-                      <span>La password es requerida!</span>
-                    </div>
-                    <div *ngIf="formularioCreado.controls['password'].errors.minLength" class="alert alert-danger" role="alert">
-                      <span>La contrasenia debe ser mayor a 6 digitos!</span>
-                    </div>
-                </div> -->
+                <div *ngIf="clientesFormulario.controls['telefono'].invalid && clientesFormulario.controls['telefono'].dirty" class="alert alert-danger" role="alert">
+                  <span *ngIf="clientesFormulario.controls['telefono'].errors.required">La foto es requerida!</span>
+                </div>
 
                 <!-- Agregando [disabled]="!formularioCreado.valid" me habilitara el boton
                 solo si es valido cada uno de los inputs del formulario-->
                 <div class="input-group form-group">
                   <input type="file" class="form-control-file" formControlName="foto"  placeholder=" Seleccione una foto" />
                 </div>
-                <!-- <div *ngIf="formularioCreado.controls['foto'].invalid && formularioCreado.controls['foto'].dirty" class="alert alert-danger" role="alert">
-                  <span *ngIf="formularioCreado.controls['foto'].errors.required">La foto es requerida!</span>
-                </div> -->
+                <div *ngIf="clientesFormulario.controls['foto'].invalid && clientesFormulario.controls['foto'].dirty" class="alert alert-danger" role="alert">
+                  <span *ngIf="clientesFormulario.controls['foto'].errors.required">La foto es requerida!</span>
+                </div>
                 <div class="loading">
                 </div>
                 <br>
-                  <button  type="submit" class="btn btn-primary float-right" (click)="agregar()">
+                  <button [disabled]="!clientesFormulario.valid"  type="submit" class="btn btn-primary float-right" (click)="agregar()">
                     Agregar
                   </button>
               </form>
