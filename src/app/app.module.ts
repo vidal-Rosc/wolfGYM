@@ -17,6 +17,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { HeaderComponent } from './header/header.component';
 import { ClientesComponent } from './clientes/clientes.component';
 import { AngularFirestore } from '@angular/fire/firestore';
+import { AddClientesComponent } from './add-clientes/add-clientes.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
     LoginComponent,
     HeaderComponent,
     ClientesComponent,
+    AddClientesComponent,
   ],
   imports: [
     BrowserModule,
