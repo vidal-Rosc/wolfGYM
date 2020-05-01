@@ -3,9 +3,18 @@ import { Routes, RouterModule } from '@angular/router';
 import { ClientesComponent } from './clientes/clientes.component';
 import { AddClientesComponent } from './add-clientes/add-clientes.component';
 import { PreciosComponent } from './precios/precios.component';
+import { RegistrosComponent } from './registros/registros.component';
+import { pathToFileURL } from 'url';
 
 
 const routes: Routes = [
+  {
+    path:'', redirectTo: 'registro', pathMatch:'full'
+  },
+  {
+    path:'registro', component: RegistrosComponent
+  },
+
   {
     path:'clientes', component: ClientesComponent
   },
@@ -18,6 +27,7 @@ const routes: Routes = [
   {
     path:'precios', component: PreciosComponent
   },
+
 
 ];
 @NgModule({

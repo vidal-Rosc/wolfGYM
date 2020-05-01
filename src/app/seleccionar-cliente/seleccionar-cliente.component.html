@@ -1,0 +1,11 @@
+<br>
+<div class="clientes">
+  <div class="input-group form-group">
+      <input type="text" class="form-group" placeholder="Buscar cliente">
+  </div>
+  <div class="list-group" >
+    <a *ngFor="let cliente of clientes" class="list-group-item list-group-item-action">{{cliente.apellidos}}, {{cliente.nombre}}</a>
+  </div>
+</div>
+
+
