@@ -11,10 +11,6 @@ export class ClientesComponent implements OnInit {
   constructor(private bbdd: AngularFirestore) { }
 
   ngOnInit(){
-    // this.bbdd.collection('clientes').valueChanges().subscribe((resultado)=>{
-    //   console.log(resultado)
-    //   this.clientes = resultado;
-    // })
 
     //Obteniendo el ID desde firebase
     //nos aseguramos de que el array esta vacio

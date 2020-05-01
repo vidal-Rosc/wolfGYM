@@ -1,0 +1,52 @@
+<div class="main">
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-8">
+        <h4>Plan de Precios</h4>
+        <ul *ngFor="let precio of listaPrecios" (click)="editarPlan(precio)">
+          <a>
+          <li>ID: {{precio.id}} / {{precio.nombre}}</li>
+          </a>
+        </ul>
+      </div>
+      <div class="col-sm-4">
+        <h4>Agregar/Editar</h4>
+        <form [formGroup]="formularioPrecio">
+          <div class="form-group">
+            <label for="">Nombre</label>
+            <input class="form-control"  formControlName="nombre"  type="text">
+          </div>
+
+          <div class="form-group">
+            <label for="">Costo</label>
+            <input class="form-control" formControlName="costo" type="number">
+          </div>
+
+          <div class="form-group">
+            <label for="">Duracion</label>
+            <input class="form-control" formControlName="duracion" type="number">
+          </div>
+
+          <div class="form-group">
+            <label for="">Plan</label>
+            <select  class="form-control" formControlName="plan" name="" id="">
+              <option value="1">Diario</option>
+              <option value="2">Semanal</option>
+              <option value="3">Mensual</option>
+              <option value="4">tri-mestral</option>
+              <option value="5">Anual</option>
+            </select>
+          </div>
+          <button *ngIf="!aEditar" type="submit" [disabled]="!formularioPrecio.valid" class="btn btn-primary float-right ml-2" (click)="agregar()">
+            Agregar
+          </button>
+          <button  *ngIf="aEditar" type="submit"[disabled]="!formularioPrecio.valid"  class="btn btn-danger float-right" (click)="editar()">
+            Editar
+          </button>
+          <br>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -22,6 +22,7 @@ import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { MensajesService } from './services/mensajes.service';
+import { PreciosComponent } from './precios/precios.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { MensajesService } from './services/mensajes.service';
     HeaderComponent,
     ClientesComponent,
     AddClientesComponent,
+    PreciosComponent,
   ],
   imports: [
     BrowserModule,
