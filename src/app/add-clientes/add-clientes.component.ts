@@ -6,6 +6,9 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
 import { ClientesComponent } from '../clientes/clientes.component';
 
+import Swal from 'sweetalert2';
+import { MensajesService } from '../services/mensajes.service';
+
 @Component({
   selector: 'app-add-clientes',
   templateUrl: './add-clientes.component.html',
@@ -22,7 +25,8 @@ export class AddClientesComponent implements OnInit {
     private fb: FormBuilder,
     private storage: AngularFireStorage,
     private bbdd: AngularFirestore,
-    private activeRoute: ActivatedRoute
+    private activeRoute: ActivatedRoute,
+    private sms: MensajesService,
   ) { }
 
   ngOnInit() {
@@ -74,6 +78,7 @@ export class AddClientesComponent implements OnInit {
     console.log(this.clientesFormulario.value)
     this.bbdd.collection('clientes').add(this.clientesFormulario.value).then((res) => {
       console.log('Registro creado');
+      this.sms.mensajeCorrecto('Agregado','Usuario agregado correctamente');
     })
   }
 
@@ -84,8 +89,11 @@ export class AddClientesComponent implements OnInit {
     this.clientesFormulario.value.fecha_nacimiento = new Date(this.clientesFormulario.value.fecha_nacimiento);
     this.bbdd.doc('clientes/' + this.id).update(this.clientesFormulario.value).then((resp)=>{
       console.log('Usuario editado correctamente')
+      this.sms.mensajeCorrecto('Editado','Usuario editado correctamente')
+
     }).catch((error)=>{
       console.log(error)
+      this.sms.mensajeError('error','Ha ocurrido un error al editar al usuario')
     })
   }
 

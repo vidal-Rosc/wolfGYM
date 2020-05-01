@@ -5,12 +5,17 @@
   background-color: #E8ECF7;
   height: 911px;
   width: 50%;
+
 }
 
 .formulario{
   background-image: url('../../assets/img/eye.png');
+  background-size: auto;
   height: 911px;
   width: 50%;
+  img {
+    opacity: 0.5;
+  }
 }
 .main{
   display: flex;
