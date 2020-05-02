@@ -48,6 +48,38 @@ export class RegistrosComponent implements OnInit {
     console.log(id)
     this.precioSeleccionado = this.precios.find( x => x.id == id);
     this.registro.precios = this.precioSeleccionado.ref;
-    console.log(this.precioSeleccionado)
+    this.registro.fecha = new Date();
+
+
+    //Calcuando los dias
+    if(this.precioSeleccionado.plan == 1){
+      let dias = this.precioSeleccionado.duracion;
+      let fechaFinal =  new Date(this.registro.fecha.getFullYear(), this.registro.fecha.getMonth(), this.registro.fecha.getDate() + dias)
+      this.registro.fechaFinal = fechaFinal;
+      //fechaFinal = this.precioSeleccionado.duracion * 1;
+    }
+    if(this.precioSeleccionado.plan == 2){
+      let dias = this.precioSeleccionado.duracion * 7;
+      let fechaFinal =  new Date(this.registro.fecha.getFullYear(),this.registro.fecha.getMonth(),this.registro.fecha.getDate() + dias)
+      this.registro.fechaFinal = fechaFinal;
+
+    }
+    if(this.precioSeleccionado.plan == 3){
+      let dias = this.precioSeleccionado.duracion * 30;
+      let fechaFinal =  new Date(this.registro.fecha.getFullYear(),this.registro.fecha.getMonth(),this.registro.fecha.getDate() + dias)
+      this.registro.fechaFinal = fechaFinal;
+    }
+    if(this.precioSeleccionado.plan == 4){
+      let meses = this.precioSeleccionado.duracion * 3;
+      let fechaFinal =  new Date(this.registro.fecha.getFullYear(),this.registro.fecha.getMonth() + meses,this.registro.fecha.getDate())
+      this.registro.fechaFinal = fechaFinal;
+    }
+    if(this.precioSeleccionado.plan == 5){
+      let anio = this.registro.fecha.getFullYear();
+      let meses = this.precioSeleccionado.duracion * 12 + this.registro.fecha.getMonth();
+      let dia: number = this.registro.fecha.getDate();
+      let fechaFinal =  new Date(anio,meses,dia)
+      this.registro.fechaFinal = fechaFinal;
+    }
   }
 }

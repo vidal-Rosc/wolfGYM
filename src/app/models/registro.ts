@@ -10,7 +10,7 @@ export class Registro {
   total: number;
 
   constructor(){
-    this.fecha = this.fecha;
+    this.fecha = null;
     this.fechaFinal = this.fechaFinal;
     this.cliente = this.cliente;
     this.precios = this.precios;

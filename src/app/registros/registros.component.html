@@ -11,7 +11,7 @@
         </app-seleccionar-cliente>
         <br>
         <br>
-        <div class="planPrecios">
+        <div class="input-group form-group flex">
             <label>Plan de Precios</label>
             <select (change)="seleccionarPrecio($event.target.value)" name="" id="">
               <option [value]=null>Seleccione un plan de precios</option>
@@ -19,6 +19,17 @@
 
             </select>
         </div>
+        <br>
+        <div class="input-group form-group flex">
+          <label>Fecha Inicio</label>
+          <input class="form-control" type="text" [value]="registro.fecha | date" disabled>
+        </div>
+
+        <div class="input-group form-group flex">
+          <label>Fecha fin</label>
+          <input class="form-control" type="text" [value]="registro.fechaFinal" disabled>
+        </div>
+
         <br>
         <br>
         <button class="btn btn-primary" (click)="guardar()">Guardar</button>
