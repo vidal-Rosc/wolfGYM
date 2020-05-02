@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Registro } from '../models/registro';
 import { Cliente } from '../models/cliente';
 import { ClientesComponent } from '../clientes/clientes.component';
+import { Precio } from '../models/precio';
 
 @Component({
   selector: 'app-registros',
@@ -12,10 +13,20 @@ import { ClientesComponent } from '../clientes/clientes.component';
 export class RegistrosComponent implements OnInit {
   registro: Registro = new Registro();
   ClienteSelected: Cliente = new Cliente();
+  precios: Precio[] = new Array<Precio>();
+  precioSeleccionado: Precio =  new Precio();
 
   constructor(private bbdd: AngularFirestore) { }
 
   ngOnInit(){
+    this.bbdd.collection('precios').get().subscribe((resultado)=>{
+      resultado.docs.forEach((item)=>{
+        let precio = item.data() as Precio;
+        precio.id = item.id;
+        precio.ref = item.ref;
+        this.precios.push(precio);
+      })
+    })
   }
 
   asignarCliente(cliente:Cliente){
@@ -30,6 +41,13 @@ export class RegistrosComponent implements OnInit {
   }
 
   guardar(){
-    console.log();
+    console.log(this.registro);
+  }
+
+  seleccionarPrecio(id:string){
+    console.log(id)
+    this.precioSeleccionado = this.precios.find( x => x.id == id);
+    this.registro.precios = this.precioSeleccionado.ref;
+    console.log(this.precioSeleccionado)
   }
 }

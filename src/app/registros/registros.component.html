@@ -9,8 +9,18 @@
         (clienteCancelado)="cancelarCliente()"
         >
         </app-seleccionar-cliente>
+        <br>
+        <br>
+        <div class="planPrecios">
+            <label>Plan de Precios</label>
+            <select (change)="seleccionarPrecio($event.target.value)" name="" id="">
+              <option [value]=null>Seleccione un plan de precios</option>
+              <option  *ngFor="let precio of precios" [value]="precio.id">{{precio.nombre}}</option>
 
-
+            </select>
+        </div>
+        <br>
+        <br>
         <button class="btn btn-primary" (click)="guardar()">Guardar</button>
       </div>
 

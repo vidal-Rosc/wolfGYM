@@ -57,5 +57,6 @@ export class SeleccionarClienteComponent implements OnInit {
 
   cancelarCliente(){
     this.nombre = undefined;
+    this.clienteCancelado.emit()
   }
 }

@@ -1,6 +1,7 @@
 <br>
 <div class="clientes">
-  <div  *ngIf="!nombre" class="input-group form-group">
+  <div  *ngIf="!nombre" class="input-group form-group flex">
+      <label>Seleccione un Cliente</label>
       <input type="text" class="form-group" placeholder="Buscar cliente" (input)="buscarCliente($event.target.value)">
   </div>
   <div *ngIf="nombre"  class="input-group form-group">
