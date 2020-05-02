@@ -1,11 +1,25 @@
 <br>
 <div class="clientes">
-  <div class="input-group form-group">
+  <div  *ngIf="!nombre" class="input-group form-group">
       <input type="text" class="form-group" placeholder="Buscar cliente" (input)="buscarCliente($event.target.value)">
+  </div>
+  <div *ngIf="nombre"  class="input-group form-group">
+    <div class="row">
+
+      <div class="col-sm-10">
+        <input  disabled [(ngModel)]="nombre" type="text" class="form-group" placeholder="Cliente....">
+      </div>
+
+      <div class="col-sm-2">
+        <button  (click)="cancelarCliente()" class="btn btn-primary"> cancelar</button>
+      </div>
+
+    </div>
+
   </div>
   <div class="list-group" >
     <div  *ngFor="let cliente of clientes"class="listaClientes">
-      <a  *ngIf="cliente.visible" class="list-group-item list-group-item-action">{{cliente.apellidos}}, {{cliente.nombre}}</a>
+      <a  *ngIf="cliente.visible" (click)="seleccionarCliente(cliente)" class="list-group-item list-group-item-action">{{cliente.apellidos}}, {{cliente.nombre}}</a>
     </div>
   </div>
 </div>
