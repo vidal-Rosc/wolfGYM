@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Registro } from '../models/registro';
 import { Cliente } from '../models/cliente';
 import { Precio } from '../models/precio';
+import { MensajesService } from '../services/mensajes.service';
 
 @Component({
   selector: 'app-registros',
@@ -14,8 +15,9 @@ export class RegistrosComponent implements OnInit {
   ClienteSelected: Cliente = new Cliente();
   precios: Precio[] = new Array<Precio>();
   precioSeleccionado: Precio = new Precio();
+  idPrecio: string = null; // para limpiar el campo de plan de precios una vez guardada una inscripcion
 
-  constructor(private bbdd: AngularFirestore) { }
+  constructor(private bbdd: AngularFirestore, private sms: MensajesService) { }
 
   ngOnInit() {
     this.bbdd.collection('precios').get().subscribe((resultado) => {
@@ -52,10 +54,15 @@ export class RegistrosComponent implements OnInit {
         total: this.registro.total,
       }
       this.bbdd.collection('registro').add(registroParaAgregar).then((resultado)=>{
+        this.registro = new Registro();
+        this.ClienteSelected = new Cliente();
+        this.precioSeleccionado = new Precio();
+        this.idPrecio = 'null';
         console.log('Inscripcion realizada con exito!')
+        this.sms.mensajeCorrecto('Registro Completo', 'Ha realizado la inscripcion correctamente')
       })
     } else {
-      console.log(this.registro.validar().mensaje)
+      this.sms.mensajeError('Error!',this.registro.validar().mensaje)
     }
   }
 
@@ -64,7 +71,7 @@ export class RegistrosComponent implements OnInit {
     if (id != null) {
       console.log(id)
       this.precioSeleccionado = this.precios.find(x => x.id == id);
-      //this.registro.precios = this.precioSeleccionado.ref
+      this.registro.precio = this.precioSeleccionado.ref
       this.registro.fecha = new Date();
 
 
