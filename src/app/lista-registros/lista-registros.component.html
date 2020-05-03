@@ -1,0 +1,29 @@
+<div class="main">
+  <div class="container">
+    <br>
+    <br>
+    <table class="table ">
+      <thead>
+        <tr>
+          <th scope="col">Cliente</th>
+          <th scope="col">Fecha Inicio</th>
+          <th scope="col">Fecha Final</th>
+          <th scope="col">Foto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let registro of registros">
+          <td scope="row">
+            {{ registro.clienteObtenido.apellidos }},
+            {{ registro.clienteObtenido.nombre }}
+          </td>
+          <td>{{ registro.fecha | date }}</td>
+          <td>{{ registro.fechaFinal | date }}</td>
+          <td>
+            <img [src]="registro.clienteObtenido.foto" class="flexImg" alt="" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

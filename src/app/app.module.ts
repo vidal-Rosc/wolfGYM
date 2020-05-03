@@ -25,6 +25,7 @@ import { MensajesService } from './services/mensajes.service';
 import { PreciosComponent } from './precios/precios.component';
 import { RegistrosComponent } from './registros/registros.component';
 import { SeleccionarClienteComponent } from './seleccionar-cliente/seleccionar-cliente.component';
+import { ListaRegistrosComponent } from './lista-registros/lista-registros.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { SeleccionarClienteComponent } from './seleccionar-cliente/seleccionar-c
     PreciosComponent,
     RegistrosComponent,
     SeleccionarClienteComponent,
+    ListaRegistrosComponent,
   ],
   imports: [
     BrowserModule,
