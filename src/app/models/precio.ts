@@ -1,4 +1,4 @@
-import { DocumentData } from '@angular/fire/firestore';
+import { DocumentReference } from '@angular/fire/firestore';
 
 export class Precio {
   id: string;
@@ -6,5 +6,5 @@ export class Precio {
   costo: number;
   duracion: number;
   plan: number;
-  ref: DocumentData;
+  ref: DocumentReference;
 }

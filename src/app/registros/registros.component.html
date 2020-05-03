@@ -5,8 +5,8 @@
       <div class="col-sm-6">
         <app-seleccionar-cliente
         [nombre]="ClienteSelected.nombre"
-        (clienteSeleccionado)="asignarCliente($event)"
-        (clienteCancelado)="cancelarCliente()"
+        (seleccionoCliente)="asignarCliente($event)"
+        (canceloCliente)="cancelarCliente()"
         >
         </app-seleccionar-cliente>
         <br>

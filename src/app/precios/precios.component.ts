@@ -63,16 +63,14 @@ export class PreciosComponent implements OnInit {
   }
 
   editar() {
-    this.bbdd.doc('precios/' + this.id).update(this.formularioPrecio.value).then((resp) => {
+    this.bbdd.doc('precios/' + this.id).update(this.formularioPrecio.value).then(() => {
       console.log('Plan editado correctamente')
       this.sms.mensajeCorrecto('Editado', 'Plan editado correctamente')
       this.formularioPrecio.reset();
       //Esto para que alterne nuevamente el boton a agregar una vez editemos.
       this.aEditar = false;
       this.mostrarPrecios();
-
-    }).catch((error) => {
-      console.log(error)
+    }).catch(() => {
       this.sms.mensajeError('error', 'Ha ocurrido un error al editar el plan deseado!')
     })
 

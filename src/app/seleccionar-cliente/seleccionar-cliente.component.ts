@@ -11,8 +11,8 @@ import { Cliente } from '../models/cliente';
 export class SeleccionarClienteComponent implements OnInit {
   clientes: Cliente[]= new Array<Cliente>();
   @Input('nombre') nombre: string;
-  @Output('clienteSeleccionado') clienteSeleccionado = new EventEmitter();
-  @Output('clienteCancelado') clienteCancelado = new EventEmitter();
+  @Output('seleccionoCliente') seleccionoCliente = new EventEmitter();
+  @Output('canceloCliente') canceloCliente = new EventEmitter();
 
   constructor(private bbdd: AngularFirestore) { }
 
@@ -52,11 +52,11 @@ export class SeleccionarClienteComponent implements OnInit {
       cliente.visible = false;
     })
 
-    this.clienteSeleccionado.emit(cliente);
+    this.seleccionoCliente.emit(cliente);
   }
 
   cancelarCliente(){
     this.nombre = undefined;
-    this.clienteCancelado.emit()
+    this.canceloCliente.emit()
   }
 }

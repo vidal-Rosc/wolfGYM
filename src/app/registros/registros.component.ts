@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Registro } from '../models/registro';
 import { Cliente } from '../models/cliente';
-import { ClientesComponent } from '../clientes/clientes.component';
 import { Precio } from '../models/precio';
 
 @Component({
@@ -41,9 +40,20 @@ export class RegistrosComponent implements OnInit {
   }
 
   guardar() {
-    console.log(this.registro);
     if(this.registro.validar().esValido){
-      console.log('Guardando....')
+
+      let registroParaAgregar = {
+        fecha: this.registro.fecha,
+        fechaFinal: this.registro.fechaFinal,
+        cliente: this.registro.cliente,
+        precio: this.registro.precio,
+        subTotal: this.registro.subTotal,
+        iva: this.registro.iva,
+        total: this.registro.total,
+      }
+      this.bbdd.collection('registro').add(registroParaAgregar).then((resultado)=>{
+        console.log('Inscripcion realizada con exito!')
+      })
     } else {
       console.log(this.registro.validar().mensaje)
     }
@@ -97,7 +107,7 @@ export class RegistrosComponent implements OnInit {
       this.precioSeleccionado = new Precio();
       this.registro.fecha = null;
       this.registro.fechaFinal = null;
-      this.registro.precios = null;
+      this.registro.precio = null;
       this.registro.subTotal = 0;
       this.registro.iva = 0;
       this.registro.total = 0;

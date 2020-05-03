@@ -4,7 +4,7 @@ export class Registro {
   fecha: Date;
   fechaFinal: Date;
   cliente: DocumentReference;
-  precios: DocumentReference;
+  precio: DocumentReference;
   subTotal: number;
   iva: number;
   total: number;
@@ -13,7 +13,7 @@ export class Registro {
     this.fecha = null;
     this.fechaFinal = null;
     this.cliente = this.cliente;
-    this.precios = this.precios;
+    this.precio = this.precio;
     this.subTotal = this.subTotal;
     this.iva = this.iva;
     this.total = this.total;
@@ -24,6 +24,7 @@ export class Registro {
       esValido: false,
       mensaje: '',
     }
+
 
     if (this.fecha == null || this.fecha == undefined) {
       respuesta.esValido = false;
@@ -40,9 +41,9 @@ export class Registro {
       respuesta.mensaje = 'No se ha seleccionado un cliente';
       return respuesta;
     }
-    if (this.precios == null || this.precios == undefined) {
+    if (this.precio == null || this.precio == undefined) {
       respuesta.esValido = false;
-      respuesta.mensaje = 'No muestra los precios';
+      respuesta.mensaje = 'No ha seleccionado los precios';
       return respuesta;
     }
     if (this.subTotal <= 0 || this.subTotal == undefined) {
