@@ -6,12 +6,12 @@
         <h4>Plan de Precios</h4>
         <ul *ngFor="let precio of listaPrecios" (click)="editarPlan(precio)">
           <a>
-          <li>ID: {{precio.id}} / {{precio.nombre}}</li>
+          <li>{{precio.nombre}}</li>
           </a>
         </ul>
       </div>
       <div class="col-sm-4">
-        <h4>Agregar/Editar</h4>
+        <h2>********  Registro  ********</h2>
         <form [formGroup]="formularioPrecio">
           <div class="form-group">
             <label for="">Nombre</label>

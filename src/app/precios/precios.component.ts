@@ -17,17 +17,19 @@ export class PreciosComponent implements OnInit {
   //para mostrar o no los botones
   aEditar: boolean = false;
   id: string;
+
   constructor(private fb: FormBuilder, private bbdd: AngularFirestore, private sms: MensajesService) { }
 
   ngOnInit() {
+
     this.formularioPrecio = this.fb.group({
       nombre: ['', Validators.required],
       costo: ['', Validators.required],
       duracion: ['', Validators.required],
       plan: ['', Validators.required],
     })
-
     this.mostrarPrecios();
+
   }
 
 

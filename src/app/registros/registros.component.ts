@@ -49,9 +49,9 @@ export class RegistrosComponent implements OnInit {
         fechaFinal: this.registro.fechaFinal,
         cliente: this.registro.cliente,
         precio: this.registro.precio,
-        subTotal: this.registro.subTotal,
-        iva: this.registro.iva,
-        total: this.registro.total,
+        subTotal: this.registro.subTotal.toExponential(2),
+        iva: this.registro.iva.toExponential(2),
+        total: this.registro.total.toExponential(2),
       }
       this.bbdd.collection('registro').add(registroParaAgregar).then((resultado)=>{
         this.registro = new Registro();
@@ -77,8 +77,11 @@ export class RegistrosComponent implements OnInit {
 
       //Calculando los precios:
       this.registro.subTotal = this.precioSeleccionado.costo;
+      this.registro.subTotal.toExponential(2);
       this.registro.iva = this.registro.subTotal * 0.21;
+      this.registro.iva.toExponential(2);
       this.registro.total = this.registro.subTotal + this.registro.iva;
+      this.registro.total.toExponential(2);
 
       //Calcuando los dias
       if (this.precioSeleccionado.plan == 1) {

@@ -33,9 +33,4 @@ export class ClientesComponent implements OnInit {
 
   }
 
-  buscarCliente(){
-
-  }
-
-  //Vamos a pasar el IDcliente por parametro, para poder asi editarlo
 }
